@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import List from "./List";
 import styles from "./Section.module.scss";
 
 const Section3 = () => {
-  const [isClose, setIsClose] = useState(true);
-
-  const toggle = () => {
-    setIsClose(!isClose);
-    console.log(!isClose);
-  };
-
   return (
     <section className={styles["container-section"]}>
       <div className={styles["container-section-main"]}>

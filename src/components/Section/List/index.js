@@ -56,6 +56,8 @@ const List = () => {
   }, []);
 
   // No Performance render concerns
+  // You can replace the handleClick function above and
+  // uncomment the function just below the see the difference of number of render.
   /*  
   const handleClick = (id) => {
     setSelectedItem((prev) => {
