@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import ItemList from "./ItemList";
-import styles from "./List.module.scss";
+import "./List.module.scss";
 
 const services = [
   {
@@ -44,14 +44,29 @@ const services = [
 const List = () => {
   const [selectedItem, setSelectedItem] = useState(0);
 
-  const handleClick = (id) => {
-    setSelectedItem(id);
+  // Performance render concerns
+  const handleClick = useCallback((id) => {
+    setSelectedItem((prev) => {
+      // If you click on the current open , all items li have to be closed.
+      if (id === prev) {
+        return 0;
+      }
+      return id;
+    });
+  }, []);
 
-    // If you click on the current open , all items li have to be closed.
-    if (id === selectedItem) {
-      setSelectedItem(0);
-    }
+  // No Performance render concerns
+  /*  
+  const handleClick = (id) => {
+    setSelectedItem((prev) => {
+      // If you click on the current open , all items li have to be closed.
+      if (id === prev) {
+        return 0;
+      }
+      return id;
+    });
   };
+  */
 
   return (
     <nav>

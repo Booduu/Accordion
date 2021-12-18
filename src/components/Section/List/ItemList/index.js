@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./ItemList.module.scss";
 import Arrow from "../../../../assets/images/arrow.png";
 
-const ItemList = ({ data, handleClick, open }) => {
+const ItemList = React.memo(({ data, handleClick, open }) => {
+  console.log("ItemList");
   return (
     <li
       key={data.title}
@@ -31,6 +32,6 @@ const ItemList = ({ data, handleClick, open }) => {
       </div>
     </li>
   );
-};
+});
 
 export default ItemList;
